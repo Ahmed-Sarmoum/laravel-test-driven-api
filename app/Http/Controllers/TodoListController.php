@@ -19,7 +19,9 @@ class TodoListController extends Controller
     }
 
     public function store(Request $req) {
-        $res = TodoList::create( $req->all());
-        return $res;
+
+        $req->validate(['name' => ['required']]);
+
+        return TodoList::create( $req->all());
     }
 }
